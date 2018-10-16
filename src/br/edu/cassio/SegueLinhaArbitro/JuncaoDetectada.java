@@ -23,7 +23,7 @@ public class JuncaoDetectada implements Behavior {
     public boolean takeControl() {
         return (sensorEsquerdo.getLightValue() <= PRETO
                && sensorDireito.getLightValue() <= PRETO
-               && SegueLinhaBeha.getTurnFlag());
+               && SegueLinhaBeha.getFlagVirar());
     }
 
     public void action() {

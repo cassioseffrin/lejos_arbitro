@@ -3,7 +3,6 @@ package br.edu.cassio.SegueLinhaArbitro;
 import lejos.nxt.LightSensor;
 import lejos.nxt.Sound;
 import lejos.robotics.navigation.DifferentialPilot;
-//import lejos.robotics.navigation.Pilot;
 import lejos.robotics.subsumption.Behavior;
 
 /**
@@ -28,9 +27,6 @@ public class EncontrarLinha implements Behavior {
 	}
 
 	public void action() {
-		/// testing
-		// LineFollower.lightValues(sensorEsquerdo, sensorDireito);
-		// if sensorEsquerdo on black, stop left wheel
 
 		Sound.playTone(440, 2);
 		int angle = 360;

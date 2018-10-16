@@ -13,34 +13,31 @@ import lejos.robotics.subsumption.Behavior;
  */
 public class SegueLinhaBeha {
 
-    public static boolean turnFlag = false;
+	public static boolean flagVirar = false;
 
-    public static void lightValues(LightSensor left, LightSensor right) {
-        System.out.println(left.getLightValue() + "\t" + right.getLightValue());
-    }
+	public static void lightValues(LightSensor esquerda, LightSensor direita) {
+		System.out.println(esquerda.getLightValue() + "\t" + direita.getLightValue());
+	}
 
-    public static void main(String[] args) {
+	public static void main(String[] args) {
 
-    	DifferentialPilot cerebro = new DifferentialPilot(ConstantesRobo.DIAMETRO_RODA,
-                                     ConstantesRobo.LARGURA_ENTRE_RODAS,
-                                     ConstantesRobo.motorEsquerdo,
-                                     ConstantesRobo.motorDireito,
-                                     true);
-        LightSensor left = new LightSensor(SensorPort.S3);
-        LightSensor right = new LightSensor(SensorPort.S4);
+		DifferentialPilot cerebro = new DifferentialPilot(ConstantesRobo.DIAMETRO_RODA,
+				ConstantesRobo.LARGURA_ENTRE_RODAS, ConstantesRobo.motorEsquerdo, ConstantesRobo.motorDireito, true);
+		LightSensor esquerda = new LightSensor(SensorPort.S3);
+		LightSensor direita = new LightSensor(SensorPort.S4);
 
-        Behavior findLine = new EncontrarLinha(left, right, cerebro);
-        Behavior forward = new Avancar(left, right, cerebro);
-        Behavior[] bs = {forward, findLine};
-        Arbitrator arr = new Arbitrator(bs);
-        arr.start();
-    }
+		Behavior encontrarLinha = new EncontrarLinha(esquerda, direita, cerebro);
+		Behavior avancar = new Avancar(esquerda, direita, cerebro);
+		Behavior[] comportamento = { avancar, encontrarLinha };
+		Arbitrator arbitro = new Arbitrator(comportamento);
+		arbitro.start();
+	}
 
-    public static boolean getTurnFlag() {
-        return turnFlag;
-    }
+	public static boolean getFlagVirar() {
+		return flagVirar;
+	}
 
-    public static void setTurnFlag(boolean newFlag) {
-        turnFlag = newFlag;
-    }
+	public static void setTurnFlag(boolean novaFlag) {
+		flagVirar = novaFlag;
+	}
 }
