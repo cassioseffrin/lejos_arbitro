@@ -21,14 +21,14 @@ public class IvarTheBoneless {
 
  
     public static void main(String [] args) {
-        DifferentialPilot cerebroo = new DifferentialPilot(ConstantesRobo.DIAMETRO_RODA,
+        DifferentialPilot cerebro = new DifferentialPilot(ConstantesRobo.DIAMETRO_RODA,
                                      ConstantesRobo.LARGURA_ENTRE_RODAS, Motor.B,
                                      Motor.A, true);
         UltrasonicSensor ultrasonic = new UltrasonicSensor(SensorPort.S3);
         ColorSensor luz = new ColorSensor(SensorPort.S2);
         int distance = 15;
        
-cerebroo.setTravelSpeed(400);
+cerebro.setTravelSpeed(400);
         //para fechar
         Button.ENTER.addButtonListener(new ButtonListener() {
             public void buttonPressed(Button button) { System.exit(0); }
@@ -36,10 +36,10 @@ cerebroo.setTravelSpeed(400);
         });
 
         // cria os comportamentos e adiciona ao array
-        Mover avanca = new Avancar(distance, cerebroo, luz, ultrasonic);
-        Mover girar = new Girar(distance, cerebroo, luz, ultrasonic);
-        Mover volta = new Voltar(distance, cerebroo, luz, ultrasonic);
-        Mover para = new Parar(distance, cerebroo, luz, ultrasonic);
+        Mover avanca = new Avancar(distance, cerebro, luz, ultrasonic);
+        Mover girar = new Girar(distance, cerebro, luz, ultrasonic);
+        Mover volta = new Voltar(distance, cerebro, luz, ultrasonic);
+        Mover para = new Parar(distance, cerebro, luz, ultrasonic);
         Behavior[] moves = {avanca, girar, para};//cia o arbitrator com array de comporatamento 
         // ciclos de comportamento 
         Arbitrator arb = new Arbitrator(moves);

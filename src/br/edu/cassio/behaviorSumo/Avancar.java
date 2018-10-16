@@ -21,7 +21,8 @@ public class Avancar extends Mover {
     @Override
     public boolean takeControl() {
         boolean  retorno;
-        retorno = (ultrasonic.getDistance()  <= 15); 
+        retorno = (ultrasonic.getDistance()  <= 15);
+        System.out.println("dist: "+ultrasonic.getDistance() +"ret " +retorno);
         return retorno ;
 
     }
@@ -34,8 +35,8 @@ public class Avancar extends Mover {
     System.out.println("AVANCAR");
         cerebro.setTravelSpeed(200);
         cerebro.forward();
-//        while (cerebro.isMoving())
-//            Thread.yield();
+        while (cerebro.isMoving())
+            Thread.yield();
   
     }
 }
